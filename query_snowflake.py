@@ -3,11 +3,11 @@ import requests
 import snowflake.connector
 
 def get_oauth_token():
-    url = os.environ["az_OAUTH_TOKEN_URL"]
+    url = os.environ["AZ_OAUTH_TOKEN_URL"]
     data = {
         'grant_type': 'client_credentials',
-        'client_id': os.environ["az_OAUTH_CLIENT_ID"],
-        'client_secret': os.environ["az_OAUTH_CLIENT_SECRET"],
+        'client_id': os.environ["AZ_OAUTH_CLIENT_ID"],
+        'client_secret': os.environ["AZ_OAUTH_CLIENT_SECRET"],
         'scope': 'session:role-any'  # Adjust scope as needed
     }
     response = requests.post(url, data=data)
