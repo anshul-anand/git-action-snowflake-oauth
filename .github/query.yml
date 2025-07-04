@@ -1,0 +1,31 @@
+name: Query Snowflake with OAuth
+
+on: [workflow_dispatch]
+
+jobs:
+  query:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: pip install snowflake-connector-python requests
+
+    - name: Run Snowflake query
+      env:
+        SF_OAUTH_CLIENT_ID: ${{ secrets.SF_OAUTH_CLIENT_ID }}
+        SF_OAUTH_CLIENT_SECRET: ${{ secrets.SF_OAUTH_CLIENT_SECRET }}
+        SF_OAUTH_TOKEN_URL: ${{ secrets.SF_OAUTH_TOKEN_URL }}
+        SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
+        SF_USER: ${{ secrets.SF_USER }}
+        SF_ROLE: ${{ secrets.SF_ROLE }}
+        SF_WAREHOUSE: ${{ secrets.SF_WAREHOUSE }}
+        SF_DATABASE: ${{ secrets.SF_DATABASE }}
+        SF_SCHEMA: ${{ secrets.SF_SCHEMA }}
+      run: python query_snowflake.py
