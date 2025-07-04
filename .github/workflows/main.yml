@@ -22,9 +22,9 @@ jobs:
 
       - name: Run Snowflake OAuth query
         env:
-          SF_OAUTH_CLIENT_ID: ${{ secrets.az_OAUTH_CLIENT_ID }}
-          SF_OAUTH_CLIENT_SECRET: ${{ secrets.az_OAUTH_CLIENT_SECRET }}
-          SF_OAUTH_TOKEN_URL: ${{ secrets.z_OAUTH_TOKEN_URL }}
+          SF_OAUTH_CLIENT_ID: ${{ secrets.AZ_OAUTH_CLIENT_ID }}
+          SF_OAUTH_CLIENT_SECRET: ${{ secrets.AZ_OAUTH_CLIENT_SECRET }}
+          SF_OAUTH_TOKEN_URL: ${{ secrets.AZ_OAUTH_TOKEN_URL }}
           SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
           SF_USER: ${{ secrets.SF_USER }}
           SF_ROLE: ${{ secrets.SF_ROLE }}
